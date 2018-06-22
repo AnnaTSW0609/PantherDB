@@ -11,8 +11,7 @@ def load_data (data_folder):
          o = []
          # this empty list stores the common Uniprot_ID temporarily for comparison 
          e = None 
-     
-         # Define a function that takes the datafile as the sole argument               
+                  
          with open(data_file, "r+") as f:# change this to the file name
              # This function is for splitting the line
              for line in f:
@@ -21,8 +20,6 @@ def load_data (data_folder):
                  a = re.split("=", y [1])
                  b = re.split("=", y [4])
                  c = re.split("=", y [5])
-                 # The above are only intermediates
-                 # The below are the important variables
                  ref_gene_uniprot_id = z [1]
                  ref_gene_db_name = a [0]
                  ref_gene_db_id = a[-1]
@@ -66,10 +63,7 @@ def load_data (data_folder):
                             }
                      o.append(new)
 
-             if o:
-             # at the last item, the ortholog is created but since it has no next ref_gene_uniprot_id to compare,
-             # it does not go to the second if and output the result
-             # and thus we need to let it output the result by giving it the condition if o == true.
+             if o: # for the final item, which does not go to the second "if" route for output 
                 d ["pantherdb"] ["ortholog"] = o
                 yield d       
                     
