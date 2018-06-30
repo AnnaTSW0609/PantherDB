@@ -40,7 +40,7 @@ def load_data (data_folder):
            
                  if ref_gene_uniprot_id != e: # if read up to a different ref. gene 
                       d ["pantherdb"] ["ortholog"] = o
-                      yield (d)  
+                      yield d  
                       e = ref_gene_uniprot_id
                       d = { "_id": ref_gene_uniprot_id,
                             "pantherdb": {
